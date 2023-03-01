@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:DropDownDemoWithAPI.ViewModels"
+             x:Class="DropDownDemoWithAPI.Views.DropDownDetailPage"
+             x:DataType="viewModels:DropDownDetailPageViewModel"
+             Title="DropDownDetailPage">
+    <VerticalStackLayout Spacing="20" Padding="10">
+        <Label Text="Drop Down Demo" FontSize="28"  VerticalOptions="Center" HorizontalOptions="Center" />
+
+        <StackLayout Orientation="Horizontal">
+            <Picker FontSize="16" Title="Select Country" 
+                    ItemsSource="{Binding CountryList}"
+                    ItemDisplayBinding="{Binding Country_Name}" 
+                    SelectedItem="{Binding SelectedCountry}"
+                    SelectedIndex="{Binding SelectedIndex}"
+                    />
+            <ActivityIndicator IsRunning="True" IsVisible="{Binding IsCountryLoading}" HeightRequest="25" WidthRequest="25" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" >
+            <Picker FontSize="16" Title="Select State" IsEnabled="{Binding IsStateSelectionEnable}" SelectedItem="{Binding SelectedState}"  ItemsSource="{Binding StateList}" ItemDisplayBinding="{Binding State_Name}" />
+            <ActivityIndicator IsRunning="True" IsVisible="{Binding IsStateLoading}" HeightRequest="25" WidthRequest="25" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" >
+            <Picker FontSize="16" Title="Select City" IsEnabled="{Binding IsCitySelectionEnable}"  ItemsSource="{Binding CityList}" ItemDisplayBinding="{Binding City_Name}" />
+            <ActivityIndicator IsRunning="True" IsVisible="{Binding IsCityLoading}" HeightRequest="25" WidthRequest="25" />
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>
